@@ -3,7 +3,7 @@ resource "aws_eks_cluster" "example" {
   role_arn = aws_iam_role.example.arn
 
   vpc_config {
-    subnet_ids = [aws_subnet.example1.id, aws_subnet.example2.id]
+    subnet_ids = ["subnet-09d94b082f48f15f2", "subnet-0f050d65fcf475ed2"]
   }
   depends_on = [
     aws_iam_role_policy_attachment.example-AmazonEKSClusterPolicy,
