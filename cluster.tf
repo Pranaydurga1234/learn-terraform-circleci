@@ -74,6 +74,18 @@ resource "aws_iam_role_policy_attachment" "AmazonEC2ContainerRegistryReadOnly" {
   role       = aws_iam_role.eks_nodes.name
 }
 
+resource "aws_eks_node_group" "node" {
+  cluster_name    = aws_eks_cluster.aws_eks.name
+  node_group_name = "node_demo"
+  node_role_arn   = aws_iam_role.eks_nodes.arn
+  subnet_ids      = ["subnet-0b2dd1147aca5c0c6", "subnet-0416c21d6c0bbe90b"]
+
+  scaling_config {
+    desired_size = 1
+    max_size     = 1
+    min_size     = 1
+  }
+
 
   depends_on = [
     aws_iam_role_policy_attachment.AmazonEKSWorkerNodePolicy,
