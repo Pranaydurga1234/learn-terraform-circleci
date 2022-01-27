@@ -78,7 +78,7 @@ resource "aws_eks_node_group" "node" {
   cluster_name    = aws_eks_cluster.aws_eks.name
   node_group_name = "node_tuto"
   node_role_arn   = aws_iam_role.eks_nodes.arn
-  subnet_ids      = ["<subnet-1>", "<subnet-2>"]
+  subnet_ids      = ["subnet-09d94b082f48f15f2", "subnet-0f050d65fcf475ed2"]
 
   scaling_config {
     desired_size = 1
