@@ -1,7 +1,16 @@
-output "eks_cluster_endpoint" {
-  value = aws_eks_cluster.aws_eks.endpoint
+output "endpoint" {
+    value = aws_eks_cluster.eks.endpoint
 }
 
-output "eks_cluster_certificate_authority" {
-  value = aws_eks_cluster.aws_eks.certificate_authority 
+
+output "node_iam_role_arn" {
+    value = aws_iam_role.eks-node.arn
+}
+
+output "certificate" {
+    value = aws_eks_cluster.eks.certificate_authority[0].data
+}
+
+output "cluster_name" {
+  value = aws_eks_cluster.eks.name
 }
