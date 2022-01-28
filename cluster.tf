@@ -75,20 +75,18 @@ resource "aws_iam_role_policy_attachment" "AmazonEC2ContainerRegistryReadOnly" {
 }
 
 resource "aws_eks_node_group" "node" {
-  ami = "ami-0a8b4cd432b1c3063"
-  instance_types  = "t2.micro"
+ 
   cluster_name    = aws_eks_cluster.aws_eks.name
   node_group_name = "node_demo"
   node_role_arn   = aws_iam_role.eks_nodes.arn
   subnet_ids      = ["subnet-0b2dd1147aca5c0c6", "subnet-0416c21d6c0bbe90b"]
-  create_before_destroy = true
-  kubernetes_version    = var.kubernetes_version == null || var.kubernetes_version == "" ? [] : [var.kubernetes_version]
-  cluster_autoscaler_enabled = var.autoscaling_policies_enabled
-  context = module.label.context
-
+  
+compute = {
+     capacity_type = "Open"
+   }
   scaling_config {
     desired_size = 1
-    max_size     = 1
+    max_size     = 2
     min_size     = 1
   }
 
