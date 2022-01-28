@@ -75,7 +75,8 @@ resource "aws_iam_role_policy_attachment" "AmazonEC2ContainerRegistryReadOnly" {
 }
 
 resource "aws_eks_node_group" "node" {
-  instance_types  = [var.instance_type]
+  ami = "ami-0a8b4cd432b1c3063"
+  instance_types  = t2.micro
   cluster_name    = aws_eks_cluster.aws_eks.name
   node_group_name = "node_demo"
   node_role_arn   = aws_iam_role.eks_nodes.arn
