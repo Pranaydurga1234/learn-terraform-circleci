@@ -3,7 +3,7 @@ variable "user" {}
 variable "label" {}
 variable "app" {}
 variable "instance_types" {
-    type = list
+    default = " "
 }
 
 variable "capacity_type" {
