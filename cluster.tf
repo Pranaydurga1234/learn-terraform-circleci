@@ -56,11 +56,7 @@ resource "aws_eks_cluster" "aws_eks" {
   vpc_config {
     subnet_ids = ["subnet-0b2dd1147aca5c0c6", "subnet-0416c21d6c0bbe90b"]
   }
-   depends_on = [
-    "aws_iam_role_policy_attachment.eks-cluster-AmazonEKSClusterPolicy",
-    "aws_iam_role_policy_attachment.eks-cluster-AmazonEKSServicePolicy",
-   ]
-
+  
   tags = {
     Name = "EKS_demo"
   }
