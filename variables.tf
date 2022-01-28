@@ -20,7 +20,7 @@ variable "eks_subnets" {
 }
 
 variable "instance_types" {
-    type = list
+    default = " "
 }
 
 variable "capacity_type" {
