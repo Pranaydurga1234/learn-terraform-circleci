@@ -83,9 +83,7 @@ resource "aws_eks_node_group" "node" {
   instance_types = ["t3.large"]
   capacity_type  = "SPOT"
 
-  remote_access{
-      ec2_ssh_key = var.ec2_ssh_key
-  }
+
 
   scaling_config {
     desired_size = 1
