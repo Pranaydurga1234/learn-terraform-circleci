@@ -102,7 +102,7 @@ resource "aws_eks_node_group" "node" {
   node_group_name = "node_demo"
   node_role_arn   = aws_iam_role.eks_nodes.arn
   subnet_ids      = ["subnet-0b2dd1147aca5c0c6", "subnet-0416c21d6c0bbe90b"]
-  instance_type = "t3.large"
+  instance_types = "t3.large"
 
 
 
