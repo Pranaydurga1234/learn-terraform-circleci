@@ -2,8 +2,8 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.terraform.io/hashicorp/aws" {
-  version     = ">= 3.20.0"
-  constraints = ">= 3.20.0"
+  version     = "3.44"
+  constraints = "3.44"
   hashes = [
     "h1:4lZHTWz4LQApWE8ZyWtxGtK2JQBohVJaTiw5AzlWzmA=",
     "h1:VOVZWybe1x0E4qyawTwt7jXVBRUplTrzVFHim217DqI=",

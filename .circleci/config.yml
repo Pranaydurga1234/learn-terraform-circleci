@@ -8,7 +8,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: terraform init -upgrade & plan
+          name: terraform init & plan
           command: |
             terraform init -input=false
             terraform plan -out tfapply -var-file variables.tfvars
