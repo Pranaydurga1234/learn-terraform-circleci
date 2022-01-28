@@ -26,6 +26,28 @@ resource "aws_iam_role_policy_attachment" "AmazonEKSServicePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
   role       = aws_iam_role.eks_cluster.name
 }
+resource "aws_security_group" "eks-cluster" {
+  name        = "SG-eks-cluster"
+  vpc_id      = "vpc-0c695f77ee1268231"  
+
+# Egress allows Outbound traffic from the EKS cluster to the  Internet 
+
+  egress {                   # Outbound Rule
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+# Ingress allows Inbound traffic to EKS cluster from the  Internet 
+
+  ingress {                  # Inbound Rule
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+}
 
 resource "aws_eks_cluster" "aws_eks" {
   name     = "eks_cluster_demo"
@@ -34,6 +56,10 @@ resource "aws_eks_cluster" "aws_eks" {
   vpc_config {
     subnet_ids = ["subnet-0b2dd1147aca5c0c6", "subnet-0416c21d6c0bbe90b"]
   }
+   depends_on = [
+    "aws_iam_role_policy_attachment.eks-cluster-AmazonEKSClusterPolicy",
+    "aws_iam_role_policy_attachment.eks-cluster-AmazonEKSServicePolicy",
+   ]
 
   tags = {
     Name = "EKS_demo"
@@ -80,8 +106,7 @@ resource "aws_eks_node_group" "node" {
   node_group_name = "node_demo"
   node_role_arn   = aws_iam_role.eks_nodes.arn
   subnet_ids      = ["subnet-0b2dd1147aca5c0c6", "subnet-0416c21d6c0bbe90b"]
-  instance_types = ["t3.large"]
-  capacity_type  = "SPOT"
+
 
 
 
