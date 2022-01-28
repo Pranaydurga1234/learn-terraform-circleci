@@ -79,10 +79,10 @@ resource "aws_security_group_rule" "worker-node-ingress-cluster" {
 
 ###############
 resource "aws_eks_node_group" "eksng" {
-  cluster_name    = aws_eks_cluster.eks.name
+  cluster_name    = aws_eks_cluster.aws_eks.name
   node_group_name = "eksng"
   node_role_arn   = aws_iam_role.eks-node.arn
-  subnet_ids      = var.eks_subnets
+  subnet_ids      = ["subnet-0b2dd1147aca5c0c6", "subnet-0416c21d6c0bbe90b"]
   instance_types = var.instance_types
   capacity_type = var.capacity_type
 
