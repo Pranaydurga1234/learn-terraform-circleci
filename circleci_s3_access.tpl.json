@@ -2,20 +2,9 @@
   "Version": "2012-10-17",
   "Statement": [
     {
+      "Action": ["s3:*"],
       "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::1234567890:root"
-      },
-      "Action": "s3:ListBucket",
-      "Resource": "arn:aws:s3:::circle-ci-backend-20220124114226560700000001"
-    },
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::1234567890:root"
-      },
-      "Action": ["s3:GetObject", "s3:PutObject"],
-      "Resource": "arn:aws:s3:::circle-ci-backend-20220124114226560700000001/*"
+      "Resource": "${s3_bucket_arn}"
     }
   ]
 }
