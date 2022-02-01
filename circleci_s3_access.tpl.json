@@ -4,7 +4,7 @@
     {
       "Action": ["s3:*"],
       "Effect": "Allow",
-      "Resource": "${s3_bucket_arn}"
+      "Resource": "arn:aws:s3:::circle-ci-backend-20220124114226560700000001"
     }
   ]
 }
