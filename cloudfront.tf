@@ -1,6 +1,6 @@
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
-    domain_name = "${aws_s3_bucket.prod_website.bucket_regional_domain_name}"
+    domain_name = "${aws_s3_bucket.terraform_state.bucket_regional_domain_name}"
     origin_id   = "${local.s3_origin_id}"
 
     #   s3_origin_config {
