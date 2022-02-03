@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "b" {
-  bucket = "mybucket"
+  bucket = "circle-ci-backend-20220124114226560700000001"
   acl    = "private"
 
   tags = {
